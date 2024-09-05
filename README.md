@@ -28,7 +28,7 @@ Installation
 
 Clone the repository:
 git clone https://github.com/coffinsp/lostools
-cd xlsninja
+cd lostools
 Run the script:
 python xlsninja.py
 The script will automatically check for and install any missing required packages.
