@@ -27,7 +27,7 @@ aiohttp==3.8.6
 Installation
 
 Clone the repository:
-git clone https://github.com/your-username/xlsninja.git](https://github.com/coffinsp/lostools
+git clone https://github.com/coffinsp/lostools
 cd xlsninja
 Run the script:
 python xlsninja.py
