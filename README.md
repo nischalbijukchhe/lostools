@@ -48,12 +48,6 @@ python xlsninja.py
 - **View and Save Results:**: Results will be displayed in real-time as the scan progresses.
 After the scan completes, you will have the option to save the URLs found to be vulnerable to a file for future reference.
 
-## Usage :
- Example Command
-
- ```bash
-python xlsninja.py --url http://example.com --payload xss_payloads.txt --threads 10
-```
 ## Customization
 
 XlsNinja allows for various levels of customization to fit your specific testing needs:
