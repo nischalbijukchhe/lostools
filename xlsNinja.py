@@ -547,10 +547,15 @@ try:
             def process_tasks(self, done):
                 for response_text, url in done:
                     self.totalScanned += 1
-                    if any(payload in response_text for payload in self.payloads):
-                        self.injectables.append(url)
-                        self.totalFound += 1
-                        print(f"{Fore.GREEN}Vulnerable:{Fore.WHITE} {url}")
+                    # Check for specific indicators of XSS vulnerability
+                if any(payload in response_text for payload in self.payloads):
+                    self.injectables.append(url)
+                    self.totalFound += 1
+                    print(f"{Fore.GREEN}Vulnerable:{Fore.WHITE} {url}")
+                else:
+                    # Additional checks for false positives
+                    if "<script>" in response_text or "alert(" in response_text:
+                        print(f"{Fore.YELLOW}Potential XSS detected but not confirmed: {Fore.WHITE}{url}")
                     else:
                         print(f"{Fore.RED}Not Vulnerable:{Fore.WHITE} {url}")
 
