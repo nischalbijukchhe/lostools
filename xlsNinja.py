@@ -1468,7 +1468,7 @@ try:
 
             urls = prompt_for_urls()
             payloads = prompt_for_payloads()
-            success_criteria_input = input("[?] Enter the success criteria patterns (comma-separated, e.g: 'root:,admin:', press Enter for 'root:x:0:'): ").strip()
+            success_criteria_input = input("[?] Enter the success criteria patterns (comma-separated, e.g: 'root:,admin:', press Enter for 'root:'): ").strip()
             success_criteria = [pattern.strip() for pattern in success_criteria_input.split(',')] if success_criteria_input else ['root:x:0:']
             
             max_threads_input = input("[?] Enter the number of concurrent threads (0-10, press Enter for 5): ").strip()
