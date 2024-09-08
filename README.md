@@ -13,7 +13,7 @@
 - **Customizable payloads**: Adjust payloads to suit specific targets.
 - **Success criteria**: Modify success detection criteria for specific use cases.
 - **User-friendly command-line interface**: Simple and intuitive.
-- **Save vulnerable URLs**: Option to save the results of vulnerable URLs to a file.
+- **Save vulnerable URLs**: Option to save the results of vulnerable URLs to a file..
 
 ## Requirements
 
