@@ -717,7 +717,9 @@ try:
                 for response_text, url in done:
                     self.totalScanned += 1
                     chrome_options = Options()
-                    chrome_options.add_argument("--headless") 
+                    chrome_options.add_argument("--headless")
+                    chrome_options.add_argument("--no-sandbox")
+                    chrome_options.add_argument("--disable-dev-shm-usage")
                     service = ChromeService(executable_path=ChromeDriverManager().install())
                     driver = webdriver.Chrome(service=service, options=chrome_options)
 
