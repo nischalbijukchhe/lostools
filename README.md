@@ -39,7 +39,7 @@ cd lostools
 To run the script, use the following command:
 
 ```bash
-python xlsniNja.py
+python xlsNinja.py
 ```
 ## Input Information:
 
