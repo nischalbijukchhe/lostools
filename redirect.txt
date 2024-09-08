@@ -299,6 +299,7 @@ javascript://whitelisted.com?%a0alert%281%29
 whitelisted.com@%E2%80%AE@google.com
 ////whitelisted.com@google.com/
 ////whitelisted.com@google.com//
+//whitelisted.com@Ⓛ𝐨𝗰�𝕝ⅆ𝓸ⓜₐℹⓃ｡Ｐⓦ////
 ///whitelisted.com@google.com/
 ///whitelisted.com@google.com//
 //whitelisted.com@google.com/
