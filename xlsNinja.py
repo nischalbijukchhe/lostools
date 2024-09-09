@@ -1,43 +1,11 @@
 # This program was created by: AnonKryptiQuz, Coffinxp Hexsh1dow and Naho
 
-try:
-    import random
-    import re
-    import os
-    import sys
-    import subprocess
-    import concurrent.futures
-    import time
-    import logging
-    import aiohttp
-    import asyncio
-    import requests
-    import urllib3
-    import urllib.parse
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from curses import panel
+import random
+import re
+from wsgiref import headers
 
-    from rich.panel import Panel
-    from rich import print as rich_print
-    from prompt_toolkit import prompt
-    from colorama import Fore, Style, init
-    from prompt_toolkit.completion import PathCompleter
-    from concurrent.futures import ThreadPoolExecutor, as_completed
-
-    from urllib3.util.retry import Retry
-    from urllib.parse import quote, urlencode, parse_qs, urlsplit, urlunsplit, urlparse, urlunparse
-
-    # Apparently not accessed in code
-    # from time import sleep # time.sleep has been used instead of just sleep.
-    # from wsgiref import headers 
-    # from rich.table import Table 
-    # from bs4 import BeautifulSoup 
-    #from curses import panel
-    # import argparse
-    
-
-except:
-    print ("Run `pip install -r requirements.txt --user` to install missing packages")
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class Color:
     BLUE = '\033[94m'
@@ -53,19 +21,41 @@ class Color:
     ITALIC = '\033[3m'
     UNITALIC = '\033[23m'
 
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
 try:
+    import os
+    import sys
+    import subprocess
+    from colorama import Fore, Style, init
+    from time import sleep
+    from rich import print as rich_print
+    from rich.panel import Panel
+    from rich.table import Table
+    import concurrent.futures
+    from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
+    from bs4 import BeautifulSoup
+    import time
+    import requests
+    import urllib3
+    from prompt_toolkit import prompt
+    from prompt_toolkit.completion import PathCompleter
+    import subprocess
+    import sys
+    import random
+    from urllib.parse import urlparse, quote
+
+
+
     init(autoreset=True)
 
-    # def check_and_install_packages(packages):
-    #     for package, version in packages.items():
-    #         try:
-    #             __import__(package)
-    #         except ImportError:
-    #             subprocess.check_call([sys.executable, '-m', 'pip', 'install', f"{package}=={version}"])
+    def check_and_install_packages(packages):
+        for package, version in packages.items():
+            try:
+                __import__(package)
+            except ImportError:
+                subprocess.check_call([sys.executable, '-m', 'pip', 'install', f"{package}=={version}"])
+
+    def clear_screen():
+        os.system('cls' if os.name == 'nt' else 'clear')
 
 
 
@@ -130,6 +120,21 @@ try:
 
     def run_sql_scanner():
         try:
+            import requests
+            import logging
+            from requests.adapters import HTTPAdapter
+            from urllib3.util.retry import Retry
+            import urllib3
+            import time
+            import concurrent.futures
+            from colorama import Fore, init
+            import os
+            from prompt_toolkit import prompt
+            from prompt_toolkit.completion import PathCompleter
+            import subprocess
+            import sys
+            import random
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
             init(autoreset=True)
 
@@ -177,12 +182,15 @@ try:
             def get_random_user_agent():
                 return random.choice(USER_AGENTS)
 
-            """ def check_and_install_packages(packages):
+            def check_and_install_packages(packages):
                 for package, version in packages.items():
                     try:
                         __import__(package)
                     except ImportError:
-                        subprocess.check_call([sys.executable, '-m', 'pip', 'install', f"{package}=={version}"]) """
+                        subprocess.check_call([sys.executable, '-m', 'pip', 'install', f"{package}=={version}"])
+
+            def clear_screen():
+                os.system('cls' if os.name == 'nt' else 'clear')
 
             def get_retry_session(retries=3, backoff_factor=0.3, status_forcelist=(500, 502, 504)):
                 session = requests.Session()
@@ -193,7 +201,7 @@ try:
                     backoff_factor=backoff_factor,
                     status_forcelist=status_forcelist,
                 )
-                adapter = requests.adapters.HTTPAdapter(max_retries=retry)
+                adapter = HTTPAdapter(max_retries=retry)
                 session.mount('http://', adapter)
                 session.mount('https://', adapter)
                 return session
@@ -309,18 +317,23 @@ try:
                 print(f"{Fore.YELLOW}[i] Total scanned: {total_scanned}")
                 print(f"{Fore.YELLOW}[i] Time taken: {int(time.time() - start_time)} seconds")
 
+
+
+
+
             def main():
                 clear_screen()
-                # required_packages = {
-                    # 'requests': '2.28.1',
-                    # 'prompt_toolkit': '3.0.36',
-                    # 'colorama': '0.4.6'
-                # } 
+                required_packages = {
+                    'requests': '2.28.1',
+                    'prompt_toolkit': '3.0.36',
+                    'colorama': '0.4.6'
+                }
 
-                # check_and_install_packages(required_packages)
+                check_and_install_packages(required_packages)
 
-                # time.sleep(3)
-                # clear_screen()
+
+                time.sleep(3)
+                clear_screen()
 
                 panel = Panel(
             r"""                                                       
@@ -503,7 +516,25 @@ try:
 
 
     def run_xss_scanner():
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+        import argparse
+        import subprocess
+        import sys
+        import time
+        import aiohttp
+        import asyncio
+        import logging
+        import os
+        from colorama import Fore, init
+        from urllib.parse import urlencode, parse_qs, urlsplit, urlunsplit
+        from prompt_toolkit import prompt
+        from prompt_toolkit.completion import PathCompleter
+        from rich import print as rich_print
+        from rich.panel import Panel
+        from rich.table import Table
+        from requests.adapters import HTTPAdapter
+        from urllib3.util.retry import Retry
         from selenium import webdriver
         from selenium.webdriver.chrome.service import Service as ChromeService
         from selenium.webdriver.common.by import By
@@ -511,7 +542,7 @@ try:
         from selenium.webdriver.support.ui import WebDriverWait
         from selenium.webdriver.support import expected_conditions as EC
         from webdriver_manager.chrome import ChromeDriverManager
-        
+        import logging
         logging.getLogger('WDM').setLevel(logging.ERROR)
 
 
@@ -566,6 +597,9 @@ try:
                 except ImportError:
                     subprocess.check_call([sys.executable, '-m', 'pip', 'install', f"{package}=={version}"])
 
+        def clear_screen():
+            os.system('cls' if os.name == 'nt' else 'clear')
+
 
         def get_random_user_agent():
             return random.choice(USER_AGENTS)
@@ -579,7 +613,7 @@ try:
                 backoff_factor=backoff_factor,
                 status_forcelist=status_forcelist,
             )
-            adapter = requests.adapters.HTTPAdapter(max_retries=retry)
+            adapter = HTTPAdapter(max_retries=retry)
             session.mount('http://', adapter)
             session.mount('https://', adapter)
             return session
@@ -680,7 +714,7 @@ try:
                     return (response_text, url)
 
             def process_tasks(self, done):
-                for response_text, url in done:  # response_text not accessed according to VS Code ?
+                for response_text, url in done:
                     self.totalScanned += 1
                     chrome_options = Options()
                     chrome_options.add_argument("--headless")
@@ -821,25 +855,17 @@ try:
 
         def main():
             clear_screen()
-
-            # Had this enabled at this point because some VPSes don't support having a headless browser install.
             required_packages = {
-                'webdriver-manager',
-                'selenium'
+                'aiohttp': '3.8.6',
+                'requests': '2.28.1',
+                'prompt_toolkit': '3.0.36',
+                'colorama': '0.4.6'
             }
-
-            # required_packages = {
-            #     'aiohttp': '3.8.6',
-            #     'requests': '2.28.1',
-            #     'prompt_toolkit': '3.0.36',
-            #     'colorama': '0.4.6'
-            # }
 
             check_and_install_packages(required_packages)
             
             time.sleep(3)
             clear_screen()
-
             panel = Panel(r"""
    _  __________  ____________   _  ___  __________
   | |/_/ __/ __/ / __/ ___/ _ | / |/ / |/ / __/ _  |
@@ -894,6 +920,20 @@ try:
     def run_or_scanner():
 
         try:
+            import requests
+            import urllib.parse
+            import os
+            import sys
+            import subprocess
+            import logging
+            import time
+            from concurrent.futures import ThreadPoolExecutor, as_completed
+            from prompt_toolkit import prompt
+            from prompt_toolkit.completion import PathCompleter
+            from colorama import Fore, init
+            from requests.adapters import HTTPAdapter
+            from urllib3.util.retry import Retry
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
             init(autoreset=True)
 
@@ -950,7 +990,7 @@ try:
                     backoff_factor=backoff_factor,
                     status_forcelist=status_forcelist,
                 )
-                adapter = requests.adapters.HTTPAdapter(max_retries=retry)
+                adapter = HTTPAdapter(max_retries=retry)
                 session.mount('http://', adapter)
                 session.mount('https://', adapter)
                 return session
@@ -1084,6 +1124,9 @@ try:
                 print(Fore.YELLOW + f"[i] Total scanned: {total_scanned}")
                 print(Fore.YELLOW + f"[i] Time taken: {int(time.time() - start_time)} seconds")
 
+            def clear_screen():
+                os.system('cls' if os.name == 'nt' else 'clear')
+
             def get_file_path(prompt_text):
                 completer = PathCompleter()
                 return prompt(prompt_text, completer=completer).strip()
@@ -1091,15 +1134,15 @@ try:
             def main():
                 clear_screen()
 
-                # required_packages = {
-                #     'requests': '2.28.1',
-                #     'prompt_toolkit': '3.0.36',
-                #     'colorama': '0.4.6'
-                # }
-                # check_and_install_packages(required_packages)
+                required_packages = {
+                    'requests': '2.28.1',
+                    'prompt_toolkit': '3.0.36',
+                    'colorama': '0.4.6'
+                }
+                check_and_install_packages(required_packages)
 
-                # time.sleep(3)
-                # clear_screen()
+                time.sleep(3)
+                clear_screen()
 
 
                 panel = Panel(
@@ -1170,6 +1213,26 @@ try:
 
 
     def run_lfi_scanner():
+       
+
+
+        import requests
+        import urllib.parse
+        import re
+        import os
+        import sys
+        import subprocess
+        import time
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+        from prompt_toolkit import prompt
+        from prompt_toolkit.completion import PathCompleter
+        from colorama import Fore, init
+        import logging
+        from requests.adapters import HTTPAdapter
+        from urllib3.util.retry import Retry
+
+
+
         USER_AGENTS = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Version/14.1.2 Safari/537.36",
@@ -1212,17 +1275,18 @@ try:
             'Wallarm': ['x-wallarm-waf-check', 'wallarm'],
         }
 
+
         init(autoreset=True)
 
         def get_random_user_agent():
             return random.choice(USER_AGENTS)
         
-        # def check_and_install_packages(packages):
-        #     for package, version in packages.items():
-        #         try:
-        #             __import__(package)
-        #         except ImportError:
-        #             subprocess.check_call([sys.executable, '-m', 'pip', 'install', f"{package}=={version}"])
+        def check_and_install_packages(packages):
+            for package, version in packages.items():
+                try:
+                    __import__(package)
+                except ImportError:
+                    subprocess.check_call([sys.executable, '-m', 'pip', 'install', f"{package}=={version}"])
 
 
 
@@ -1235,7 +1299,7 @@ try:
                 backoff_factor=backoff_factor,
                 status_forcelist=status_forcelist,
             )
-            adapter = requests.adapters.HTTPAdapter(max_retries=retry)
+            adapter = HTTPAdapter(max_retries=retry)
             session.mount('http://', adapter)
             session.mount('https://', adapter)
             return session
@@ -1363,6 +1427,9 @@ try:
             print(Fore.YELLOW + f"[i] Time taken: {int(time.time() - start_time)} seconds")
             exit()
 
+        def clear_screen():
+            os.system('cls' if os.name == 'nt' else 'clear')
+
         def get_file_path(prompt_text):
             completer = PathCompleter()
             return prompt(prompt_text, completer=completer).strip()
@@ -1370,15 +1437,15 @@ try:
         def main():
             clear_screen()
 
-            # required_packages = {
-            #     'requests': '2.28.1',
-            #     'prompt_toolkit': '3.0.36',
-            #     'colorama': '0.4.6'
-            # }
-            # check_and_install_packages(required_packages)
+            required_packages = {
+                'requests': '2.28.1',
+                'prompt_toolkit': '3.0.36',
+                'colorama': '0.4.6'
+            }
+            check_and_install_packages(required_packages)
 
-            # time.sleep(3)
-            # clear_screen()
+            time.sleep(3)
+            clear_screen()
 
             panel = Panel(
             r"""
@@ -1461,7 +1528,6 @@ try:
         elif selection == '4':
             clear_screen()
             run_xss_scanner()
-
         elif selection == '5':
             clear_screen()
             print_exit_menu()
@@ -1471,17 +1537,17 @@ try:
 
     def main():
         clear_screen()
-        # required_packages = {
-        #     'aiohttp': '3.8.6',
-        #     'requests': '2.28.1',
-        #     'prompt_toolkit': '3.0.36',
-        #     'colorama': '0.4.6'
-        # }
+        required_packages = {
+            'aiohttp': '3.8.6',
+            'requests': '2.28.1',
+            'prompt_toolkit': '3.0.36',
+            'colorama': '0.4.6'
+        }
 
-        # check_and_install_packages(required_packages)
+        check_and_install_packages(required_packages)
 
-        # sleep(3)
-        # clear_screen()
+        sleep(3)
+        clear_screen()
 
         while True:
             display_menu()
