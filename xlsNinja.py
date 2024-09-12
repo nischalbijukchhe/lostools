@@ -783,24 +783,26 @@ try:
 
             def run(self):
                 asyncio.run(self.scan())
+                try:
+                    print(f"{Fore.YELLOW}\n[i] Scanning finished.")
+                    print(f"{Fore.YELLOW}[i] Total scanned: {self.totalScanned}")
+                    print(f"{Fore.YELLOW}[i] Time taken: {int(time.time() - self.t0)} seconds\n")
+                    print(f"{Fore.GREEN}[i] Vulnerabilities found: {len(self.injectables)}")
 
-                print(f"{Fore.YELLOW}\n[i] Scanning finished.")
-                print(f"{Fore.YELLOW}[i] Total scanned: {self.totalScanned}")
-                print(f"{Fore.YELLOW}[i] Time taken: {int(time.time() - self.t0)} seconds\n")
-                print(f"{Fore.GREEN}[i] Vulnerabilities found: {len(self.injectables)}")
-
-                if self.injectables:  
-                    save_option = input(f"{Fore.CYAN}[?] Do you want to save the vulnerable URLs to {self.output}? (y/n, press Enter for n): ").strip().lower()
-                    if save_option == 'y':
-                        self.save_injectables_to_file()
-                        os._exit(0)
+                    if self.injectables:  
+                        save_option = input(f"{Fore.CYAN}[?] Do you want to save the vulnerable URLs to {self.output}? (y/n, press Enter for n): ").strip().lower()
+                        if save_option == 'y':
+                            self.save_injectables_to_file()
+                            os._exit(0)
+                        else:
+                            print(f"{Fore.YELLOW}Vulnerable URLs will not be saved.")
+                            os._exit(0)
                     else:
-                        print(f"{Fore.YELLOW}Vulnerable URLs will not be saved.")
+                        print(f"{Fore.YELLOW}No vulnerabilities found. No URLs to save.")
                         os._exit(0)
-                else:
-                    print(f"{Fore.YELLOW}No vulnerabilities found. No URLs to save.")
-                    os._exit(0)
 
+                except KeyboardInterrupt:
+                    sys.exit(0)
 
                                     
             def save_injectables_to_file(self):
